@@ -1,22 +1,19 @@
 package com.kodilla.testing;
 
-import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.collection.OddNumbersExterminator;
+
+import java.util.ArrayList;
 
 public class TestingMain {
     public static void main(String[] args) {
-        int a = 50;
-        int b = 45;
-        int resultadd = Calculator.addAB(a,b);
-        if(resultadd==(a+b)){
-            System.out.println("Test add ok");
-        } else {
-            System.out.println("Error add");
+
+        ArrayList<Integer> unsortedlist = new ArrayList<Integer>();
+        for(int i=0; i<10;i++){
+            unsortedlist.add(i);
         }
-        int resultsub = Calculator.subAB(a,b);
-        if(resultsub==(a-b)){
-            System.out.println("Test sub ok");
-        } else {
-            System.out.println("Error sub");
-        }
-        }
+
+        OddNumbersExterminator exe = new OddNumbersExterminator();
+        exe.exterminate(unsortedlist);
+
     }
+}
