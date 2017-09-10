@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class OddNumbersExterminator {
 
-    public void exterminate(ArrayList<Integer> templist) {
+    //metoda musi zwracać kolekcje
+    public ArrayList<Integer> exterminate(ArrayList<Integer> templist) {
 
         ArrayList<Integer> sortedlist = new ArrayList<Integer>();
 
@@ -13,10 +14,10 @@ public class OddNumbersExterminator {
                sortedlist.add(integrator);
             }
         }
-        for (int integrator :sortedlist){
-            System.out.println(integrator);
-        }
+          return sortedlist;
+
     }
 
 }
+
 
