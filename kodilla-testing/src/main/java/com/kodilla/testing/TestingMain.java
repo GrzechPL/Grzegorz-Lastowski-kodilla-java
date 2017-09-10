@@ -14,6 +14,5 @@ public class TestingMain {
 
         OddNumbersExterminator exe = new OddNumbersExterminator();
         exe.exterminate(unsortedlist);
-
     }
 }
