@@ -5,8 +5,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.*;
 
-import java.util.ArrayList;
-
 //Test suite for classes of Forum
 public class ShapeCollectorTestSuite {
 
@@ -67,27 +65,7 @@ public class ShapeCollectorTestSuite {
         obj.addFigure(cir);
 
         //Then
-        Assert.assertEquals("Circle@863", obj.getFigure(0));
-
-
-
+        Assert.assertEquals("Circle", obj.getFigure(0).getShapeName());
     }
-
-    @Test
-    public void testshowFigure() {
-
-        //Given
-        ShapeCollector obj = new ShapeCollector();
-
-        //When
-        Circle cir = new Circle(50);
-        Square sqr = new Square(30);
-        obj.addFigure(cir);
-        obj.addFigure(sqr);
-
-        //Then
-        Assert.assertEquals("", obj.showFigure());
-    }
-
-    }
+}
 
