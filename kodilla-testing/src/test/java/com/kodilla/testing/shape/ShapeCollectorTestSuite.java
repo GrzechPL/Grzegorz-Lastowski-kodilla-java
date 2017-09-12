@@ -30,14 +30,64 @@ public class ShapeCollectorTestSuite {
 
     @Test
     public void testAddFigure() {
+
+            //Given
+            ShapeCollector obj = new ShapeCollector();
+            //When
+            Square squ = new Square(25);
+            obj.addFigure(squ);
+            //Then
+            Assert.assertEquals("Square", obj.getFigure(0).getShapeName());
+            Assert.assertEquals(25, obj.getFigure(0).getField(), 0.01);
+    }
+
+    @Test
+    public void testRemoveFigure() {
+
         //Given
-        ArrayList<String> figures = new ArrayList<>();
+        ShapeCollector obj = new ShapeCollector();
 
         //When
-        figures.add("Square");
+        Circle cir = new Circle(50);
+        obj.addFigure(cir);
+        obj.removeFigure(cir);
 
         //Then
-        ShapeCollector obj = new ShapeCollector();
-        Assert.assertEquals("Square", obj.addFigure());
+        Assert.assertEquals(0, obj.figures.size());
     }
-}
+
+    @Test
+    public void testGetFigure() {
+
+        //Given
+        ShapeCollector obj = new ShapeCollector();
+
+        //When
+        Circle cir =new Circle(50);
+        obj.addFigure(cir);
+
+        //Then
+        Assert.assertEquals("Circle@863", obj.getFigure(0));
+
+
+
+    }
+
+    @Test
+    public void testshowFigure() {
+
+        //Given
+        ShapeCollector obj = new ShapeCollector();
+
+        //When
+        Circle cir = new Circle(50);
+        Square sqr = new Square(30);
+        obj.addFigure(cir);
+        obj.addFigure(sqr);
+
+        //Then
+        Assert.assertEquals("", obj.showFigure());
+    }
+
+    }
+
