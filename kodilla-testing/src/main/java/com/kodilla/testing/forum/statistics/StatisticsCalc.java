@@ -1,28 +1,29 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.*;
-
 public class StatisticsCalc {
 
-    private final Statistics statistics;
-    Statistics statistic;
+    // pola z sześcioma statystykami
+    // statystyki zapamientane w polach klasy
 
-    public StatisticsCalc(Statistics statistics) {
-        this.statistics = statistics;
-    }
-    LinkedList<String> names = new LinkedList<String>();
-    int numberOfPosts;
-    int numberOfComments;
+    public int userCount;
+    public int postCount;
+    public int commentsCount;
+    public double averagePostsPerUser;
+    public double averageCommentsPerUser;
+    public double averageCommentsPerPost;
 
 
-     StatisticsCalc calculateAdvStatistics(Statistics statistics){
+     public void calculateAdvStatistics(Statistics statistics){
+        // metoda przyjmuje typ argumentu Statistics oraz argument o nazwie statistics,
+         // inaczej metoda przyjmuje zmjenną statistics o typie Statistics(czyli nasz interfejs)
+         //dzieki temu mamy dostęp do metod interfejsu
 
-        int numberOfUsers = names.size();
-        double averagePostsPerUser = numberOfPosts/numberOfUsers;
-        double averageCommentsPerUser = numberOfComments/numberOfUsers;
-        double averageCommentsPerPost =numberOfComments/numberOfPosts;
-
-        return LinkedList;
+         userCount = statistics.usersNames().size();
+         postCount = statistics.postsCount();
+         commentsCount = statistics.commentsCount();
+         averagePostsPerUser = postCount/userCount;
+         averageCommentsPerUser = commentsCount/userCount;
+         averageCommentsPerPost = commentsCount/postCount;
     }
 }
 

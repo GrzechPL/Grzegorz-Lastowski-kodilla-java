@@ -1,7 +1,7 @@
 package com.kodilla.testing.forum.statistics;
 
 import java.util.LinkedList;
-import java.util.List;
+
 
 public interface Statistics {
     //lista metod przez które bede pobierał dane
