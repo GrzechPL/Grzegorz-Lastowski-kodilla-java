@@ -22,8 +22,8 @@ public class StatisticsCalc {
          postCount = statistics.postsCount();
          commentsCount = statistics.commentsCount();
          averagePostsPerUser = postCount/userCount;
-         averageCommentsPerUser = commentsCount/userCount;
-         averageCommentsPerPost = commentsCount/postCount;
+         averageCommentsPerUser = (double)commentsCount/userCount;
+         averageCommentsPerPost = (double)commentsCount/postCount;
     }
 }
 
