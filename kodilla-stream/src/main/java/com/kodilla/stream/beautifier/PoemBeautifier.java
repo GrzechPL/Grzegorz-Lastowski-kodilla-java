@@ -4,7 +4,12 @@ public class PoemBeautifier {
 
     public static String beautify(String tekst, PoemDecorator poemDecorator) {
 
-         String result = String.substring(0, 3);
+        // zmienna tekst przed powiększeniem liter
+        System.out.println(tekst);
+        //powiększenie liter
+        String result = poemDecorator.decorate(tekst);
+        //rezultat powiększenia
+         System.out.println(result);
          return result;
 
     }
