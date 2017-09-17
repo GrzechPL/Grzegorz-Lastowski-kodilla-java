@@ -1,8 +1,9 @@
 package com.kodilla.testing.forum.statistics;
 import org.junit.Assert;
 import org.junit.Test;
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.*;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -136,10 +137,10 @@ public class StatisticsTestSuite {
         StatisticsCalc statisticsCalc = new StatisticsCalc();
 
         int postcount = 100;
-        //int commentsCount = 10;
+        int commentsCount = 10;
         List<String> userNames = Arrays.asList();
-        //when(statisticMock.postsCount()).thenReturn(postcount);
-        //when(statisticMock.commentsCount()).thenReturn(commentsCount);
+        when(statisticMock.postsCount()).thenReturn(postcount);
+        when(statisticMock.commentsCount()).thenReturn(commentsCount);
         when(statisticMock.usersNames()).thenReturn(userNames);
 
 
@@ -148,9 +149,9 @@ public class StatisticsTestSuite {
 
         //Then
         //Assert.assertEquals(0.1, statisticsCalc.averageCommentsPerPost, 0.1 );
-        //Assert.assertEquals(10, statisticsCalc.averageCommentsPerUser, 0.1 );
+        Assert.assertEquals(0, statisticsCalc.averageCommentsPerUser, 0.1 );
         Assert.assertEquals(0, statisticsCalc.averagePostsPerUser, 0.1 );
-    }
+        }
 
     @Test
     public void test7StatisticsCalc() {
@@ -161,7 +162,10 @@ public class StatisticsTestSuite {
 
         int postcount = 10;
         //int commentsCount = 10;
-        List<String> userNames = Arrays.asList("Name1","Name2","Name3","Name4","Name5");
+        List<String> userNames = new LinkedList<>();
+        for(int i = 0; i < 100; i++) {
+            userNames.add("user"+i);
+        }
         when(statisticMock.postsCount()).thenReturn(postcount);
         //when(statisticMock.commentsCount()).thenReturn(commentsCount);
         when(statisticMock.usersNames()).thenReturn(userNames);
@@ -173,7 +177,7 @@ public class StatisticsTestSuite {
         //Then
         //Assert.assertEquals(0.1, statisticsCalc.averageCommentsPerPost, 0.1 );
         //Assert.assertEquals(10, statisticsCalc.averageCommentsPerUser, 0.1 );
-        Assert.assertEquals(2, statisticsCalc.averagePostsPerUser, 0.1 );
+        Assert.assertEquals(0.1, statisticsCalc.averagePostsPerUser, 0.1 );
     }
 
 }
