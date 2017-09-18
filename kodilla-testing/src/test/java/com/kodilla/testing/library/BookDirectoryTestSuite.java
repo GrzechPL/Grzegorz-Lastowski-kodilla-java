@@ -100,8 +100,7 @@ public class BookDirectoryTestSuite {
         LibraryUser user1 = new LibraryUser("Grzegorz", "Brzeczyszczykiewicz", "1234567");
         Book book1 = new Book("tytul", "autor", 1990);
 
-        //LibraryUser user0 = new LibraryUser("Jan", "Kowalski", "997");
-        //Book book0 = new Book();
+        LibraryUser user0 = new LibraryUser("Jan", "Kowalski", "997");
 
         LibraryUser user5 = new LibraryUser("Jan", "Paweł", "99783535");
         Book book50 = new Book("abc","zxc",1888);
@@ -113,8 +112,7 @@ public class BookDirectoryTestSuite {
         List<Book> resultListOf1Books1 = new ArrayList<>();
         resultListOf1Books1.add(book1);
 
-        //List<Book> resultListOf1Books0 = new ArrayList<>();
-        //resultListOf1Books0.add(book0);
+        List<Book> resultListOf1Books0 = new ArrayList<>();
 
         List<Book> resultListOf1Books5 = new ArrayList<>();
         resultListOf1Books5.add(book50);
@@ -125,15 +123,15 @@ public class BookDirectoryTestSuite {
 
 
         when(libraryDatabaseMock.listBooksInHandsOf(user1)).thenReturn(resultListOf1Books1);
-        //when(libraryDatabaseMock.listBooksInHandsOf(user0)).thenReturn(resultListOf1Books0);
+        when(libraryDatabaseMock.listBooksInHandsOf(user0)).thenReturn(resultListOf1Books0);
         when(libraryDatabaseMock.listBooksInHandsOf(user5)).thenReturn(resultListOf1Books5);
 
         List<Book> oneBooks = bookLibrary.listBooksInHandsOf(user1);
-        //List<Book> nullBooks = bookLibrary.listBooksInHandsOf(user0);
+        List<Book> nullBooks = bookLibrary.listBooksInHandsOf(user0);
         List<Book> fifeBooks = bookLibrary.listBooksInHandsOf(user5);
 
         assertEquals(1, oneBooks.size());
-        //assertEquals(0, nullBooks.size());
+        assertEquals(0, nullBooks.size());
         assertEquals(5, fifeBooks.size());
 
     }
