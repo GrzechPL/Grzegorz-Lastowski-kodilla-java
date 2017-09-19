@@ -1,5 +1,4 @@
 package com.kodilla.stream.forumuser;
-
 import java.time.LocalDate;
 
 public final class  ForumUser {
@@ -11,11 +10,11 @@ public final class  ForumUser {
     private final LocalDate dateOfBirth;
     private final int postCounter;
 
-    public ForumUser(final int userId, final String userName, final char sex, final int yearOFBirth,final int monthOfBirth,final int dayOfBirth, final int postCounter) {
+    public ForumUser(final int userId, final String userName, final char sex, final LocalDate dateOfBirth, final int postCounter) {
         this.userId = userId;
         this.userName = userName;
         this.sex = sex;
-        this.dateOfBirth = LocalDate.of(yearOFBirth,monthOfBirth,dayOfBirth);
+        this.dateOfBirth = dateOfBirth;
         this.postCounter = postCounter;
     }
 
