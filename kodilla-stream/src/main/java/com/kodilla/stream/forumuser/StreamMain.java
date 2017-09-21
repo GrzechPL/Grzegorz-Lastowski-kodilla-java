@@ -10,10 +10,11 @@ public class StreamMain {
         Forum forum = new Forum();
         //inicjalizacja stream
             //zmiennej userMap o typie Map przypisujemy stream pobierany z metody getUserList()
+            //xyz nazwa funkcji może jakakolwiek
         Map<Integer,ForumUser> userMap = forum.getUserList().stream()
-                .filter(forumUser -> forumUser.getSex() == 'M')
-                .filter(forumUser -> forumUser.getDateOfBirth().isBefore(LocalDate.now().minusYears(20)))
-                .filter(forumUser -> forumUser.getPostCounter() > 0)
+                .filter(xyz -> xyz.getSex() == 'M')
+                .filter(xyz -> xyz.getDateOfBirth().isBefore(LocalDate.now().minusYears(20)))
+                .filter(xyz -> xyz.getPostCounter() > 0)
                 //kolektory tworzą kolekcje wynikowe
                 //wynikiem tego ma być kolekcja typu map
                 //uzyta jest referencja klasy :: do metody, oraz funkcja
@@ -22,6 +23,7 @@ public class StreamMain {
                 .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
         //drukowanie na konsoli
         System.out.println("# elements: " + userMap.size());
+        //entrySet metoda zwraca kolekcje Set mapy
         userMap.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
