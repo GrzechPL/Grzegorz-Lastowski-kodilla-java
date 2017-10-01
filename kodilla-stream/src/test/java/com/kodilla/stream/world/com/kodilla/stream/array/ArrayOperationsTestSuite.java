@@ -21,11 +21,11 @@ public class ArrayOperationsTestSuite {
     @Test
     public void testGetPeopleQuantity(){
         //Given
-       int[] numbers = {5,3,4,6};
+       int[] numbers = {5,10,15};
         //When
-        OptionalDouble result = ArrayOperations.getAverage(numbers);
+        double result = ArrayOperations.getAverage(numbers);
         //Then
-        Assert.assertEquals(4.5,result);
+        Assert.assertEquals(10,result,0.1);
     }
 
 
