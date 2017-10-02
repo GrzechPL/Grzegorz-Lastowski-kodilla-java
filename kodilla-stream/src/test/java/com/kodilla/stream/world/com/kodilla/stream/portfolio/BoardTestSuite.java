@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
@@ -145,21 +145,23 @@ public class BoardTestSuite {
         inProgressTasks.add(new TaskList("In progress"));
 
         //1 strumien ma obliczyć sume dni
-                project.getTaskLists().stream()
+               double result = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
+                //spłaszcza stream z tl na t
                 .flatMap(tl -> tl.getTasks().stream())
+                //wyciąga date z t na D
                 .map(t -> t.getCreated())
-                .sum();
-        //obliczenia ilosci zdarzeń
-        long longTasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .count();
-
+                //wyciaga dni z D robi d
+                .map(D -> DAYS.between(D, LocalDate.now()))
+               //mapuje na Long
+                .mapToLong(d->d)
+                //uzywamy average dzieki przekształceniu streamu na typu long
+                //liczy średnią ze streamu
+                .average()
+                //przekształca z OptionalDouble na double
+                .getAsDouble();
         //Then
-        Assert.assertEquals(3, longTasks);
-
-
+        Assert.assertEquals(10, result,0.1);
     }
 }
 
