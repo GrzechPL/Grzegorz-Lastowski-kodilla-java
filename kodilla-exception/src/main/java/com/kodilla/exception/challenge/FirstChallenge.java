@@ -2,7 +2,7 @@ package com.kodilla.exception.challenge;
 
 public class FirstChallenge {
 
-    //metoda divide zgłaszająca wyjątek
+    //metoda divide zgłaszająca wyjątek i wyrzyca go do klasy wyżej czyli main
 
     public double divide(double a, double b) throws ArithmeticException {
         if(b == 0){
