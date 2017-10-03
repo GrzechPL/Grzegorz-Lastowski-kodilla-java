@@ -1,22 +1,14 @@
-package com.kodilla.exception.test;
+package com.kodilla.exception.challenge;
 
 public class FirstChallenge {
 
-    public double divide(double a, double b){
-        return a / b;
+    //metoda divide zgłaszająca wyjątek
 
-    try
-        {
+    public double divide(double a, double b) throws ArithmeticException {
+        if(b == 0){
+            throw new ArithmeticException();
+        }
         return a / b;
-        }
-    catch(ArithmeticException e)
-        {
-            System.out.println("Nie dzielimy przez zero"+e);
-        }
-    finally
-    {
-        System.out.println("Wykonuje sie zawsze");
-    }
     }
 
     /**
@@ -27,9 +19,15 @@ public class FirstChallenge {
 
         FirstChallenge firstChallenge = new FirstChallenge();
 
-        double result = firstChallenge.divide(3, 0);
+        try {
 
-        System.out.println(result);
+            firstChallenge.divide(3,0);
 
+        }catch (ArithmeticException e){
+            System.out.println("Nie dzielimy przez zero");
+        }
+        finally {
+            System.out.println("Nie usuniesz mnie nigdy ");
+        }
     }
 }
