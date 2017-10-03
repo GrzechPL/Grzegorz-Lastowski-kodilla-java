@@ -7,7 +7,7 @@ public class ExceptionHandling {
         SecondChallenge secondChallenge = new SecondChallenge();
 
         try {
-            secondChallenge.probablyIWillThrowException(1.5git,2);
+            secondChallenge.probablyIWillThrowException(1.5,2);
 
         }catch (Exception e){
             System.out.println("Zły wpis");
