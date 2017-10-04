@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static java.util.Arrays.stream;
-
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 class MovieStore {
 
@@ -38,8 +37,11 @@ class MovieStore {
 
      MovieStore movieStore = new MovieStore();
 
-        movieStore.getMovies().entrySet().stream()
-                .map(x->x+" ! ")
-                .forEach(System.out::print);
+        String tekstpołączony = movieStore.getMovies().entrySet().stream()
+                .map(x->x.getKey()+x.getValue())
+                .collect(Collectors.joining(" ! ", " ----> ", " <---- "));
+        System.out.println(tekstpołączony);
+
     }
+
 }
