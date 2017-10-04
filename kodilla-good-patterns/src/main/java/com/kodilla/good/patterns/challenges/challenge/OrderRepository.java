@@ -1,4 +1,4 @@
-package com.kodilla.exception.challenge;
+package com.kodilla.good.patterns.challenges.challenge;
 
 public interface OrderRepository {
 
