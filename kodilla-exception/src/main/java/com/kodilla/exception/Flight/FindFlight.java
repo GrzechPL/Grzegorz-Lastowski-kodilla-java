@@ -21,8 +21,9 @@ public class FindFlight {
 
                 throw new RouteNotFoundException();
             }
-                return entry.getValue();
-    }
+            boolean zwrot = entry.getValue();
+        }
+        return hashMap.values();
 
 
     public static void main(String[] args) {
