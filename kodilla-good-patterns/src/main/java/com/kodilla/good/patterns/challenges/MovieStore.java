@@ -37,8 +37,8 @@ class MovieStore {
 
      MovieStore movieStore = new MovieStore();
 
-        String tekstpołączony = movieStore.getMovies().entrySet().stream()
-                .map(x->x.getKey()+x.getValue())
+        String tekstpołączony = movieStore.getMovies().values().stream()
+                .flatMap(x -> x.stream())
                 .collect(Collectors.joining(" ! ", " ----> ", " <---- "));
         System.out.println(tekstpołączony);
 
