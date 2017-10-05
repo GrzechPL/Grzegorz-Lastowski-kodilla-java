@@ -16,7 +16,7 @@ public class Fly {
         allfly.put("Wrocław","Poznań");
         allfly.put("Poznań","Wrocław");
         allfly.put("Poznań","Wrocław");
-        allfly.put("Poznań","Wrocław");
+        allfly.put("Poznań","Warszawa");
 
 
         return new HashMap<>(allfly);
