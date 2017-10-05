@@ -2,13 +2,13 @@ package com.kodilla.good.patterns.challenges.challenge;
 
 public class ProductOrderService {
 
-    private InformationService informationService;
-    private OrderService orderService;
-    private OrderRepository orderRepository;
+    private static InformationService informationService;
+    private  static OrderService orderService;
+    private static OrderRepository orderRepository;
 
-    public ProductOrderService(final InformationService informationService, final OrderService orderServiceService, final OrderRepository orderRepository) {
+    public ProductOrderService(final InformationService informationService, final OrderService orderService, final OrderRepository orderRepository) {
         this.informationService = informationService;
-        this.orderService = orderServiceService;
+        this.orderService = orderService;
         this.orderRepository = orderRepository;
     }
 
@@ -23,5 +23,15 @@ public class ProductOrderService {
         } else {
             return new OrderDto(orderRequest.getUser(), false);
         }
+    }
+
+
+    public static void main(String[] args) {
+
+        OrderRequestRetriver orderRequestRetriver = new OrderRequestRetriver();
+        OrderRequest orderRequest = OrderRequestRetriver.retrive();
+
+        ProductOrderService productOrderService =new ProductOrderService(new InformationServiceEmail(),new OrderServicePcGames(),new         OrderRepositoryDataBase());
+        productOrderService.process(orderRequest);
     }
 }
