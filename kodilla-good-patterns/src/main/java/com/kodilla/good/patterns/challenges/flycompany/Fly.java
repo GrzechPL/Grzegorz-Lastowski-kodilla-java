@@ -2,7 +2,6 @@ package com.kodilla.good.patterns.challenges.flycompany;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Fly {
@@ -15,7 +14,7 @@ public class Fly {
         allfly.put("Warszawa","Wrocław");
         allfly.put("Wrocław","Poznań");
         allfly.put("Poznań","Wrocław");
-        allfly.put("Poznań","Wrocław");
+        allfly.put("Poznań","Gdynia");
         allfly.put("Poznań","Warszawa");
 
 
@@ -25,7 +24,7 @@ public class Fly {
     public void findFromCity(String city){
 
     Map<Object, Object> formcity =allFly().entrySet().stream()
-            .filter(x->x.getKey().equals(city))
+            //.filter(x->x.getKey().equals(city))
             .collect(Collectors.toMap(k->k.getKey(),v-> v.getValue()));
 
        System.out.println(formcity);
