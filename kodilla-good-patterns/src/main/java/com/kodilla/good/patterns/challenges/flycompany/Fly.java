@@ -26,7 +26,7 @@ public class Fly {
 
     Map<Object, Object> formcity =allFly().entrySet().stream()
             .filter(x->x.getKey().equals(city))
-            .collect(Collectors.toMap(k->k,v-> v));
+            .collect(Collectors.toMap(k->k.getKey(),v-> v.getValue()));
 
        System.out.println(formcity);
 
