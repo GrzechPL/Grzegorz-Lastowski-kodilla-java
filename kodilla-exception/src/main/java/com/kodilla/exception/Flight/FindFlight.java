@@ -16,20 +16,16 @@ public class FindFlight {
         hashMap.put("Inglostadt", true);
 
         boolean result = false;
-
         for (Map.Entry<String, Boolean> entry : hashMap.entrySet()) {
             if (flight.getArrivalAirport().equals(entry.getKey()))
             {
-                result = entry.getValue();
-                break;
+                return entry.getValue();
             }
-            else
-            {
+
+            }
                 throw new RouteNotFoundException();
-            }
         }
-        return result;
-    }
+
 
 
     public static void main(String[] args) {

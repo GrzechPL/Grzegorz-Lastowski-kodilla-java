@@ -13,9 +13,9 @@ public class ProductOrderService {
     }
 
     public OrderDto process(final OrderRequest orderRequest) {
-        boolean isRented = orderService.rent(orderRequest.getUser(), orderRequest.getOrderitem());
+        boolean isOrdered = orderService.rent(orderRequest.getUser(), orderRequest.getOrderitem());
 
-        if(isRented) {
+        if (isOrdered) {
             informationService.inform(orderRequest.getUser());
             orderRepository.createRental(orderRequest.getUser(), orderRequest.getOrderitem());
             return new OrderDto(orderRequest.getUser(), true);
@@ -23,3 +23,4 @@ public class ProductOrderService {
             return new OrderDto(orderRequest.getUser(), false);
         }
     }
+}
