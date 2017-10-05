@@ -15,22 +15,29 @@ public class FindFlight {
         hashMap.put("Zielona Góra", true);
         hashMap.put("Inglostadt", true);
 
+        boolean result = false;
 
         for (Map.Entry<String, Boolean> entry : hashMap.entrySet()) {
-            if (!flight.getArrivalAirport().equals(entry.getKey())) {
-
+            if (flight.getArrivalAirport().equals(entry.getKey()))
+            {
+                result = entry.getValue();
+                break;
+            }
+            else
+            {
                 throw new RouteNotFoundException();
             }
-            boolean zwrot = entry.getValue();
         }
-        return hashMap.values();
+        return result;
+    }
 
 
     public static void main(String[] args) {
+
         FindFlight findFlight = new FindFlight();
         boolean filght = false;
         try {
-            filght = findFlight.mapFilght(new Flight("Warszawa", "London"));
+            filght = findFlight.mapFilght(new Flight("Warszawa", "Gdańsk"));
         } catch (RouteNotFoundException e) {
             System.out.println("Lotnisko nie jest na liście ");
         }
