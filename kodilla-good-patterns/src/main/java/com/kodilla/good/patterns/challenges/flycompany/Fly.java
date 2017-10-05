@@ -2,6 +2,8 @@ package com.kodilla.good.patterns.challenges.flycompany;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Fly {
 
@@ -13,6 +15,8 @@ public class Fly {
         allfly.put("Warszawa","Wrocław");
         allfly.put("Wrocław","Poznań");
         allfly.put("Poznań","Wrocław");
+        allfly.put("Poznań","Wrocław");
+        allfly.put("Poznań","Wrocław");
 
 
         return new HashMap<>(allfly);
@@ -20,15 +24,23 @@ public class Fly {
 
     public void findFromCity(String city){
 
+    Map<Object, Object> formcity =allFly().entrySet().stream()
+            .filter(x->x.getKey().equals(city))
+            .collect(Collectors.toMap(k->k,v-> v));
 
-        if(allFly().containsKey(city))
+       System.out.println(formcity);
+
+
+
+
+      /*  if(allFly().containsKey(city))
         {
           System.out.println("Lista kluczy zawiera napewno lot z " +city);
         }
         else
         {
             System.out.println("Nie zawieram lotu z miasta " +city);
-        }
+        }*/
     }
 
     public void findToCity(String city){
@@ -46,7 +58,7 @@ public class Fly {
 
     public static void main(String[] args) {
         Fly fly = new Fly();
-        fly.findFromCity("Wrocław");
+        fly.findFromCity("Poznań");
         fly.findToCity("Wrocław");
     }
 }
