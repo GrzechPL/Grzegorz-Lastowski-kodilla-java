@@ -31,7 +31,7 @@ public class ProductOrderService {
         OrderRequestRetriver orderRequestRetriver = new OrderRequestRetriver();
         OrderRequest orderRequest = OrderRequestRetriver.retrive();
 
-        ProductOrderService productOrderService =new ProductOrderService(new InformationServiceEmail(),new OrderServicePcGames(),new         OrderRepositoryDataBase());
+        ProductOrderService productOrderService = new ProductOrderService(new InformationServiceEmail(),new OrderServicePcGames(),new         OrderRepositoryDataBase());
         productOrderService.process(orderRequest);
     }
 }
