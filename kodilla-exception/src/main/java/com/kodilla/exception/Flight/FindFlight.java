@@ -26,8 +26,6 @@ public class FindFlight {
                 throw new RouteNotFoundException();
         }
 
-
-
     public static void main(String[] args) {
 
         FindFlight findFlight = new FindFlight();
