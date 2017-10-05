@@ -14,10 +14,39 @@ public class Fly {
         allfly.put("Wrocław","Poznań");
         allfly.put("Poznań","Wrocław");
 
+
         return new HashMap<>(allfly);
     }
 
-    public void findfly(GivenCityRetriver givenCityRetriver){
+    public void findFromCity(String city){
 
+
+        if(allFly().containsKey(city))
+        {
+          System.out.println("Lista kluczy zawiera napewno lot z " +city);
+        }
+        else
+        {
+            System.out.println("Nie zawieram lotu z miasta " +city);
+        }
+    }
+
+    public void findToCity(String city){
+
+
+        if(allFly().containsValue(city))
+        {
+            System.out.println("Lista wartości zawiera napewno lot do " +city);
+        }
+        else
+        {
+            System.out.println("Nie zawieram lotu do miasta " +city);
+        }
+    }
+
+    public static void main(String[] args) {
+        Fly fly = new Fly();
+        fly.findFromCity("Wrocław");
+        fly.findToCity("Wrocław");
     }
 }

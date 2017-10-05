@@ -28,10 +28,10 @@ public class ProductOrderService {
 
     public static void main(String[] args) {
 
-        OrderRequestRetriver orderRequestRetriver = new OrderRequestRetriver();
-        OrderRequest orderRequest = OrderRequestRetriver.retrive();
+    OrderRequestRetriver orderRequestRetriver = new OrderRequestRetriver();
+    OrderRequest orderRequest = orderRequestRetriver.retrive();
 
-        ProductOrderService productOrderService = new ProductOrderService(new InformationServiceEmail(),new OrderServicePcGames(),new         OrderRepositoryDataBase());
-        productOrderService.process(orderRequest);
-    }
+    ProductOrderService productOrderService = new ProductOrderService(new InformationServiceEmail(),new OrderServicePcGames(),new         OrderRepositoryDataBase());
+    productOrderService.process(orderRequest);
+}
 }

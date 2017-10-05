@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges.challenge;
 
 public class OrderRequestRetriver {
 
-    public static OrderRequest retrive(){
+    public OrderRequest retrive(){
 
         User user1 = new User("Marian","Kusmider");
         String orderitem ="Civilizacja 5 -limited edition";
