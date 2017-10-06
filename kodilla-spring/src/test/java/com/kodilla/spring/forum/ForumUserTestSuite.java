@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class SpringRunnerTestSuite {
+public class ForumUserTestSuite {
     @Test
     public void testGetUsername() {
         //Given
@@ -13,7 +13,7 @@ public class SpringRunnerTestSuite {
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
         ForumUser forumUser = context.getBean(ForumUser.class);
         //When
-        String name = forumUser.username();
+        String name = forumUser.showName();
         //Then
         Assert.assertEquals("John Smith", name);
     }

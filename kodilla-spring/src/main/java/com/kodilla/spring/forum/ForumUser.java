@@ -7,8 +7,10 @@ public class ForumUser {
 
     String username ;
 
-    public ForumUser() {
-        this.username = "John Smith";
+    public String showName() {
 
+        username = "John Smith";
+
+        return username;
     }
 }
