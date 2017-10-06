@@ -9,7 +9,7 @@ public class ForumUser {
 
     public String showName() {
 
-        username = "John Smith";
+        this.username = "John Smith";
 
         return username;
     }
