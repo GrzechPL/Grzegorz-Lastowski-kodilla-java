@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 //tworzy obiekt klasy ForumUser i umieszcza w kontenerze
 @Component
+
 public class ForumUser {
 
     String username ;
