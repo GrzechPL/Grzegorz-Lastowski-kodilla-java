@@ -7,7 +7,7 @@ public class Display {
 
     public void displayValue(double val){
 
-        System.out.println(val);
+        System.out.println("Wyswietlam : "+val);
 
-            }
+    }
 }
