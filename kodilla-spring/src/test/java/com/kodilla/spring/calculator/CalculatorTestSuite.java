@@ -17,8 +17,14 @@ public class CalculatorTestSuite {
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
         Calculator calculator = context.getBean(Calculator.class);
         //When
-           double name = calculator.add(6,6);
+        double addresult = calculator.add(10,5);
+        double subresult = calculator.sub(15,10);
+        double mulresult = calculator.mul(20,15);
+        double divresult = calculator.div(25,20);
         //Then
-        Assert.assertEquals(12, name,0.1);
+        Assert.assertEquals(15, addresult,0.1);
+        Assert.assertEquals(5, subresult,0.1);
+        Assert.assertEquals(300, mulresult,0.1);
+        Assert.assertEquals(1.25, divresult,0.1);
     }
 }
