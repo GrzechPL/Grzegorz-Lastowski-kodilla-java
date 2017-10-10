@@ -22,8 +22,4 @@ public class BoardConfig {
         public TaskList getDoneList(){
                 return new TaskList(new ArrayList<>());
         }
-       /* @Bean
-        public Board(TaskList toDoList, TaskList inProgressList, TaskList doneList){
-
-}*/
 }
