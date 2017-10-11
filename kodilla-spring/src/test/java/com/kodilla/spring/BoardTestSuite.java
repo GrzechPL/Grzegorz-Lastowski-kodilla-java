@@ -1,6 +1,8 @@
 package com.kodilla.spring;
 
 import com.kodilla.spring.portfolio.Board;
+import com.kodilla.spring.portfolio.BoardConfig;
+import com.kodilla.spring.portfolio.TaskList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +29,11 @@ public class BoardTestSuite {
     @Test
     public void testTaskAdd() {
         //Given
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.portfolio");
+
+        Board board = context.getBean(Board.class);
+
+        TaskList task1 =new TaskList(board);
 
         //When
 
