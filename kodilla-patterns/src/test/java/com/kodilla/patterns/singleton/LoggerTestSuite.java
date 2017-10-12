@@ -12,15 +12,13 @@ public class LoggerTestSuite {
         //When
         String resultlastlog = Logger.getInstance().getLastLog();
         //Then
-        Assert.assertEquals("", resultlastlog);
+        Assert.assertEquals("Logowanie testowegit ", resultlastlog);
 
     }
     @Test
     public void testLogSuite() {
-        //Given
-        Logger.getInstance().log();
-        //When
-        String resultlog = Logger.getInstance().log();
+        //Given,When
+        Logger.getInstance().log("Logowanie testowe");
         //Then
         // Do nothing void
 
