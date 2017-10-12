@@ -12,7 +12,7 @@ public class LoggerTestSuite {
         //When
         String resultlastlog = Logger.getInstance().getLastLog();
         //Then
-        Assert.assertEquals("Logowanie testowegit ", resultlastlog);
+        Assert.assertEquals("Logowanie testowe", resultlastlog);
 
     }
     @Test
