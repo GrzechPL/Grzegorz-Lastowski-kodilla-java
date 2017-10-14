@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.util.Map;
 
-import static org.mockito.Mockito.RETURNS_SMART_NULLS;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -39,6 +38,7 @@ public class TestSuiteMapService {
         when(mapService.getEntry(index)).thenReturn(entry);
         //When
         Map.Entry<Integer,String> result = mapService.getEntry(index);
+
         //Then
         Assert.assertEquals(entry, result);
     }
