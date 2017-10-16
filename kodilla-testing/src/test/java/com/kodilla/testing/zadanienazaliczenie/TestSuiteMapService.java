@@ -36,7 +36,6 @@ public class TestSuiteMapService {
         when(mapService.getEntry(index)).thenReturn(entry);
         //When
         Map.Entry<Integer,String> result = mapService.getEntry(index);
-
         //Then
         Assert.assertEquals(entry, result);
     }
