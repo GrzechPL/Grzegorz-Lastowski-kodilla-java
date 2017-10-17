@@ -6,6 +6,8 @@ public class PaintingTask implements Task{
     String color;
     String whatToPaint;
 
+    boolean taskExecuted;
+
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
         this.color = color;
@@ -13,8 +15,9 @@ public class PaintingTask implements Task{
     }
 
     @Override
-    public void executeTask() {
-        System.out.println("Maluje "+taskName);
+    public String executeTask() {
+        taskExecuted = true;
+        return taskName+" "+whatToPaint+" "+color;
     }
 
     @Override
@@ -24,9 +27,7 @@ public class PaintingTask implements Task{
 
     @Override
     public boolean isTaskExecuted() {
-        if(whatToPaint.length()>0){
-            return true;
-        }
-        return false;
+        taskExecuted = false;
+        return taskExecuted;
     }
 }

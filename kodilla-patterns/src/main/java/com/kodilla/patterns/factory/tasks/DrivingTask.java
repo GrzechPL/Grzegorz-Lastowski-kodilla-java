@@ -6,6 +6,8 @@ public class DrivingTask implements Task {
     String where;
     String using;
 
+    boolean taskExecuted;
+
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
         this.where = where;
@@ -13,8 +15,9 @@ public class DrivingTask implements Task {
     }
 
     @Override
-    public void executeTask() {
-        System.out.println("Jade "+where);
+    public String executeTask() {
+        taskExecuted = true;
+        return taskName+" "+where+" "+" "+using;
     }
 
     @Override
@@ -24,9 +27,7 @@ public class DrivingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        if(where.length()>0){
-            return true;
-        }
-        return false;
+        taskExecuted = false;
+        return taskExecuted;
     }
 }
