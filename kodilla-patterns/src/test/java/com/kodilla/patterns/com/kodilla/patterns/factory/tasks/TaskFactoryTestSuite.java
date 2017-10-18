@@ -16,7 +16,7 @@ public class TaskFactoryTestSuite {
         //Then
         Assert.assertEquals("Zakupy w EuroAGD 1.0 pralka", shopping.executeTask());
         Assert.assertEquals("Zakupy w EuroAGD", shopping.getTaskName());
-        Assert.assertEquals(false, shopping.isTaskExecuted());
+        Assert.assertEquals(true, shopping.isTaskExecuted());
 
     }
     @Test
@@ -28,7 +28,7 @@ public class TaskFactoryTestSuite {
         //Then
         Assert.assertEquals("Malowaniwe sciany niebieski", painting.executeTask());
         Assert.assertEquals("Malowaniwe", painting.getTaskName());
-        Assert.assertEquals(false, painting.isTaskExecuted());
+        Assert.assertEquals(true, painting.isTaskExecuted());
 
     }
 
@@ -41,7 +41,7 @@ public class TaskFactoryTestSuite {
         //Then
         Assert.assertEquals("Wakacje kreta  samochód",driving.executeTask());
         Assert.assertEquals("Wakacje", driving.getTaskName());
-        Assert.assertEquals(false, driving.isTaskExecuted());
+        Assert.assertEquals(true, driving.isTaskExecuted());
 
     }
 

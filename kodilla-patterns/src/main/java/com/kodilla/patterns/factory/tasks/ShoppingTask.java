@@ -26,7 +26,6 @@ public class ShoppingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        taskExecuted = false;
         return taskExecuted;
     }
 }
