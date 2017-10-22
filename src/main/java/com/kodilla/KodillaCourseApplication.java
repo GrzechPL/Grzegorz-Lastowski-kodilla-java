@@ -9,8 +9,12 @@ public class KodillaCourseApplication
 
 	public static void main(String[] args)
 	{
-	FirstClass firstClass = new FirstClass();
-		System.out.println(firstClass);
+		//FirstClass.metodax();
+		FirstClass firstClass = new FirstClass();
+		String przy = firstClass.przyklad;
+		System.out.println(przy);
+
+
 	}
 }
 
