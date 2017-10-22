@@ -59,7 +59,7 @@ public class DbManagerTestSuite {
         while(rs.next()) {
             System.out.println( rs.getString("FIRSTNAME")
                     + " "
-                    + rs.getString("LASTNAME")gi
+                    + rs.getString("LASTNAME")
                     + "\t"
                     + rs.getInt("TASK_NUMBER"));
             counter++;
