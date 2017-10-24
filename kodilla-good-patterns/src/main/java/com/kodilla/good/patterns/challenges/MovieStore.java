@@ -37,10 +37,10 @@ class MovieStore {
 
      MovieStore movieStore = new MovieStore();
 
-        String tekstpołączony = movieStore.getMovies().values().stream()
+        String tekstpolaczony = movieStore.getMovies().values().stream()
                 .flatMap(x -> x.stream())
                 .collect(Collectors.joining(" ! ", " ----> ", " <---- "));
-        System.out.println(tekstpołączony);
+        System.out.println(tekstpolaczony);
 
     }
 
