@@ -14,12 +14,8 @@ public class Product {
     String name;
     List<Item> items = new ArrayList<>();
 
-
-
     public Product(){
-
     }
-
     public Product(String name) {
         this.name = name;
     }
