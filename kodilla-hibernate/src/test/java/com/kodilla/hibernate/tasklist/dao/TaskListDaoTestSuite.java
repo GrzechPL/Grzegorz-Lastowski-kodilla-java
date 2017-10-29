@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.tasklist.dao;
 
 import com.kodilla.hibernate.tasklist.TaskList;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
