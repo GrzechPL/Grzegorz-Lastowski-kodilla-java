@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 @NamedNativeQuery(
                 name = "Company.theFirstThreeCharacters",
                 query = "SELECT * FROM COMPANY " +
-                        "WHERE SUBSTRING (NAME,1,3) = :THETHREELETTERS",
+                        "WHERE SUBSTRING(NAME,1,3) = :THETHREELETTERS",
                 resultClass = Company.class
 )
 @Entity
