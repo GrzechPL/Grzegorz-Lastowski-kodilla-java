@@ -41,6 +41,9 @@ public class CompanyDaoTestSuite {
 
         //Then
         Assert.assertEquals(3, resultlista.size());
+
+        //CleanUp
+        employeeDao.deleteAll();
     }
 
     @Test
@@ -71,6 +74,8 @@ public class CompanyDaoTestSuite {
         Assert.assertEquals(3, resultlista2.size());
         Assert.assertEquals(1, resultlista3.size());
 
+        //CleanUp
+        companyDao.deleteAll();
     }
 }
 
