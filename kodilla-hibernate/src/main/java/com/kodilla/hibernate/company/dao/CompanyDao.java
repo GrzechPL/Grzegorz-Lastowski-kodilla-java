@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.company.dao;
 
 import com.kodilla.hibernate.company.Company;
-import com.kodilla.hibernate.company.Employee;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

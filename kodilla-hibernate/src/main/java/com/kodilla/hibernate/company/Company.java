@@ -5,8 +5,9 @@ import javax.validation.constraints.NotNull;
 
 @NamedNativeQuery(
                 name = "Company.theFirstThreeCharacters",
-                query = "SELECT NAME," +
-                        "WHERE SUBSTRING (NAME 1,3) = :THETHREELETTERS"
+                query = "SELECT *COMPANY" +
+                        "WHERE SUBSTRING (NAME 1,3) = :THETHREELETTERS",
+                resultClass = Company.class
 )
 @Entity
 @Table(name = "COMPANY")
