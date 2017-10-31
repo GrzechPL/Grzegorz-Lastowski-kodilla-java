@@ -11,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -65,8 +64,8 @@ public class InvoiceDaoTestSuite {
         int id = invoice2.getId();
         Invoice readinvoice = invoiceDao.findOne(id);
 
-        String name = product1.getName();
-        Product readproduct = productDao.findOne(1);
+       String name = product1.getName();
+       Product readproduct = productDao.findOne(1);
 
         int readitem = (int)itemDao.count();
 
