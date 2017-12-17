@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 @NamedNativeQuery(
                 name = "Company.theFirstThreeCharacters",
                 query = "SELECT * FROM COMPANY " +
-                        "WHERE SUBSTRING(NAME,1,3) = :THETHREELETTERS",
+                        "WHERE SUBSTRING(BINARY NAME,1,3) = :THETHREELETTERS",
                 resultClass = Company.class
 )
 @Entity
@@ -15,12 +15,12 @@ public class Company {
     int id;
     String name;
 
-    public Company(){
+    public Company(){}
 
-    }
     public Company(String name) {
         this.name = name;
     }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -28,6 +28,7 @@ public class Company {
     public int getId() {
         return id;
     }
+
     @Column(name = "NAME")
     public String getName() {
         return name;

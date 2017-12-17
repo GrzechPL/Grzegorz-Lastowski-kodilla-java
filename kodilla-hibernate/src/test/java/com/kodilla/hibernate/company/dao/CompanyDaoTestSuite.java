@@ -70,8 +70,8 @@ public class CompanyDaoTestSuite {
         List<Company> resultlista3 = companyDao.theFirstThreeCharacters("IBM");
 
         //Then
-        Assert.assertEquals(3, resultlista1.size());
-        Assert.assertEquals(3, resultlista2.size());
+        Assert.assertEquals(1, resultlista1.size());
+        Assert.assertEquals(2, resultlista2.size());
         Assert.assertEquals(1, resultlista3.size());
 
         //CleanUp
