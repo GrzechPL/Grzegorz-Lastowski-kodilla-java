@@ -9,6 +9,10 @@ import javax.validation.constraints.NotNull;
                         "WHERE SUBSTRING(BINARY NAME,1,3) = :THETHREELETTERS",
                 resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.partLettersCompany",
+        query = "SELECT C FROM Company C WHERE name LIKE :companyName"
+)
 @Entity
 @Table(name = "COMPANY")
 public class Company {
