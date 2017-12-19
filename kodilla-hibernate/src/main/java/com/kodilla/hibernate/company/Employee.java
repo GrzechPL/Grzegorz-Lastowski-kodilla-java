@@ -3,12 +3,17 @@ package com.kodilla.hibernate.company;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-
+@NamedQueries({
 @NamedQuery(
-            name = "Employee.retriveEmployeeWithSurname",
-            query = "FROM Employee WHERE surname = :SURNAME"
-
+       name = "Employee.retriveEmployeeWithSurname",
+       query = "FROM Employee WHERE surname = :SURNAME"
+),
+@NamedQuery(
+        name = "Employee.employeeSurname",
+        query = "FROM Employee WHERE surname LIKE :employeeSurname"
 )
+})
+
 @Entity
 @Table(name = "EMPLOYEE")
 public class Employee {

@@ -1,7 +1,9 @@
 package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.company.Company;
+import com.kodilla.hibernate.company.Employee;
 import com.kodilla.hibernate.company.dao.CompanyDao;
+import com.kodilla.hibernate.company.dao.EmployeeDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,19 +19,49 @@ public class FacadeTestSuite {
 
     @Autowired
     SearchFacade searchFacade;
+
     @Autowired
     CompanyDao companyDao;
 
-    @Test
-    public void test(){
+    @Autowired
+    EmployeeDao employeeDao;
 
-        Company first = new Company("First");
+    @Test
+    public void testCompany(){
+
+        Company first = new Company("KowalskiSA");
+        Company second = new Company("MalinowskiSA");
+        Company third = new Company("DudaSA");
+
         companyDao.save(first);
-        List<Company> st = searchFacade.searchCompany("st");
-        Assert.assertEquals(st.size(),1);
-        Assert.assertEquals("First",st.get(0).getName());
+        companyDao.save(second);
+        companyDao.save(third);
+
+        List<Company> st = searchFacade.searchCompany("ki");
+
+        Assert.assertEquals(2,st.size());
+        Assert.assertEquals("KowalskiSA",st.get(0).getName());
 
         companyDao.deleteAll();
+
+    }
+    @Test
+    public void testEmployee(){
+
+        Employee first = new Employee("Jan","Kowalski");
+        Employee second = new Employee("Tomasz","Dąbrowski");
+        Employee third = new Employee("Marian","Kusmider");
+
+        employeeDao.save(first);
+        employeeDao.save(second);
+        employeeDao.save(third);
+
+        List<Employee> ski = searchFacade.searchEmployee("ski");
+
+        Assert.assertEquals(2,ski.size());
+        Assert.assertEquals("Dąbrowski",ski.get(1).getSurname());
+
+        employeeDao.deleteAll();
 
     }
 

@@ -1,7 +1,9 @@
 package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.company.Company;
+import com.kodilla.hibernate.company.Employee;
 import com.kodilla.hibernate.company.dao.CompanyDao;
+import com.kodilla.hibernate.company.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,13 +15,24 @@ public class SearchFacade {
     @Autowired
     CompanyDao companyDao;
 
-    public List<Company> searchCompany(String companyName){
+    @Autowired
+    EmployeeDao employeeDao;
 
-        companyName = "%"+companyName+"%";
+    public List<Company> searchCompany(String employeeSurname){
 
-        List<Company> companies = companyDao.partLettersCompany(companyName);
+        employeeSurname = "%"+employeeSurname+"%";
+
+        List<Company> companies = companyDao.partLettersCompany(employeeSurname);
 
         return companies;
     }
 
+    public List<Employee> searchEmployee(String employeeName) {
+
+        employeeName = "%" + employeeName + "%";
+
+        List<Employee> employees = employeeDao.employeeSurname(employeeName);
+
+        return employees;
+    }
 }

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 )
 @NamedQuery(
         name = "Company.partLettersCompany",
-        query = "SELECT C FROM Company C WHERE name LIKE :companyName"
+        query = "FROM Company WHERE name LIKE :companyName"
 )
 @Entity
 @Table(name = "COMPANY")
