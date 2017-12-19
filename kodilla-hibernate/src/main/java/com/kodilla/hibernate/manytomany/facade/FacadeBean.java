@@ -1,4 +1,4 @@
 package com.kodilla.hibernate.manytomany.facade;
 
-public class facade {
+public class FacadeBean {
 }
