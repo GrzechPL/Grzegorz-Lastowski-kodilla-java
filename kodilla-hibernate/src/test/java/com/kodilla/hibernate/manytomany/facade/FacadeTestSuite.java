@@ -48,18 +48,19 @@ public class FacadeTestSuite {
     @Test
     public void testEmployee(){
 
-        Employee first = new Employee("Jan","Kowalski");
-        Employee second = new Employee("Tomasz","Dąbrowski");
+
+        Employee first = new Employee("Jan","Kowamilski");
+        Employee second = new Employee("Tomasz","Dąbromiwski");
         Employee third = new Employee("Marian","Kusmider");
 
         employeeDao.save(first);
         employeeDao.save(second);
         employeeDao.save(third);
 
-        List<Employee> ski = searchFacade.searchEmployee("ski");
+        List<Employee> mi = searchFacade.searchEmployee("mi");
 
-        Assert.assertEquals(2,ski.size());
-        Assert.assertEquals("Dąbrowski",ski.get(1).getSurname());
+        Assert.assertEquals(3,mi.size());
+        Assert.assertEquals("Dąbromiwski",mi.get(1).getSurname());
 
         employeeDao.deleteAll();
 
