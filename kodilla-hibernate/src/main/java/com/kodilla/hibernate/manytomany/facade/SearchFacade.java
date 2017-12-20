@@ -27,11 +27,11 @@ public class SearchFacade {
         return companies;
     }
 
-    public List<Employee> searchEmployee(String employeeName) {
+    public List<Employee> searchEmployee(String employeeSurname) {
 
-        employeeName = "%" + employeeName + "%";
+        employeeSurname = "%" + employeeSurname + "%";
 
-        List<Employee> employees = employeeDao.employeeSurname(employeeName);
+        List<Employee> employees = employeeDao.employeeSurname(employeeSurname);
 
         return employees;
     }
