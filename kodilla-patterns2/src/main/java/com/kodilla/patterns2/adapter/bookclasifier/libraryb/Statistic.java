@@ -17,7 +17,7 @@ public class Statistic implements BookStatistic {
 
     @Override
     public int medianPublicationYear(Map<BookSignature, Book> books) {
-        if (books.size() == 0) return 0;
+        if (books.size() == 0);
         int [] years = new int[books.size()];
         int n = 0;
         for (Map.Entry<BookSignature,Book> entry :books.entrySet()){
