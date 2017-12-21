@@ -13,8 +13,8 @@ public class MedianAdapter extends MedianAdaptee implements Classifier{
         if (bookSet.size() == 0) return 0;
         int [] years = new int[bookSet.size()];
         int n = 0;
-        for (Set.<Book> entry :bookSet){
-            years[n] = entry.getYearOfPublication();
+        for (Set<Book> entry :bookSet){
+            years[n] = entry;
             n++;
         }
         Arrays.sort(years);
