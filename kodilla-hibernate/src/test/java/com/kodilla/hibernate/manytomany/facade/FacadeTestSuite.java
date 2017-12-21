@@ -48,7 +48,6 @@ public class FacadeTestSuite {
     @Test
     public void testEmployee(){
 
-
         Employee first = new Employee("Jan","Kowamilski");
         Employee second = new Employee("Tomasz","Dąbromiwski");
         Employee third = new Employee("Marian","Kusmider");
