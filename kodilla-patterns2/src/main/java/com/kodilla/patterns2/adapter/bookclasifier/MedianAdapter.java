@@ -10,7 +10,7 @@ import java.util.Set;
 public class MedianAdapter extends MedianAdaptee implements Classifier{
     @Override
     public int publicationYearMedian(Set<Book> bookSet) {
-        if (bookSet.size() == 0);
+        if (bookSet.size() == 0) return 0;
         int [] years = new int[bookSet.size()];
         int n = 0;
         for (Book entry :bookSet){
