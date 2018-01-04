@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: kodilla_course
+-- Host: localhost    Database: kodilla_course
 -- ------------------------------------------------------
 -- Server version	5.7.20-log
 
@@ -16,8 +16,99 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Temporary view structure for view `books_and_readers`
+--
+
+DROP TABLE IF EXISTS `books_and_readers`;
+/*!50001 DROP VIEW IF EXISTS `books_and_readers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `books_and_readers` AS SELECT 
+ 1 AS `reader_id`,
+ 1 AS `firstname`,
+ 1 AS `lastname`,
+ 1 AS `title`,
+ 1 AS `rent_date`,
+ 1 AS `return_date`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `bestsellers_count`
+--
+
+DROP TABLE IF EXISTS `bestsellers_count`;
+/*!50001 DROP VIEW IF EXISTS `bestsellers_count`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `bestsellers_count` AS SELECT 
+ 1 AS `counter`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `books_and_readers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `books_and_readers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`kodilla_user`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `books_and_readers` AS select `rd`.`READER_ID` AS `reader_id`,`rd`.`FIRSTNAME` AS `firstname`,`rd`.`LASTNAME` AS `lastname`,`bk`.`TITLE` AS `title`,`rt`.`RENT_DATE` AS `rent_date`,`rt`.`RETURN_DATE` AS `return_date` from ((`readers` `rd` join `books` `bk`) join `rents` `rt`) where ((`rt`.`BOOK_ID` = `bk`.`BOOK_ID`) and (`rt`.`READER_ID` = `rd`.`READER_ID`)) order by `rt`.`RENT_DATE` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `bestsellers_count`
+--
+
+/*!50001 DROP VIEW IF EXISTS `bestsellers_count`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `bestsellers_count` AS select count(0) AS `counter` from `books` where (`books`.`bestseller` = 1) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Dumping events for database 'kodilla_course'
 --
+/*!50106 SET @save_time_zone= @@TIME_ZONE */ ;
+/*!50106 DROP EVENT IF EXISTS `update_best` */;
+DELIMITER ;;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;;
+/*!50003 SET character_set_client  = utf8 */ ;;
+/*!50003 SET character_set_results = utf8 */ ;;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;;
+/*!50003 SET @saved_time_zone      = @@time_zone */ ;;
+/*!50003 SET time_zone             = 'SYSTEM' */ ;;
+/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `update_best` ON SCHEDULE EVERY 1 MINUTE STARTS '2018-01-05 00:04:56' ON COMPLETION NOT PRESERVE ENABLE DO begin
+call UpdateBestSellers();
+insert into stats(stat_date, stat, value)
+	values (curdate(), "bestseller", bestsellers_count);
+
+end */ ;;
+/*!50003 SET time_zone             = @saved_time_zone */ ;;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;;
+/*!50003 SET character_set_results = @saved_cs_results */ ;;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;;
+DELIMITER ;
+/*!50106 SET TIME_ZONE= @save_time_zone */ ;
 
 --
 -- Dumping routines for database 'kodilla_course'
@@ -163,4 +254,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-04 10:29:32
+-- Dump completed on 2018-01-05  0:10:04
