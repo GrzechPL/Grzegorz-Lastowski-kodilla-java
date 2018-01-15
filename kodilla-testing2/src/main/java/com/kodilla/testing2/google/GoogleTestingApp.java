@@ -1,11 +1,29 @@
 package com.kodilla.testing2.google;
 
 import com.kodilla.testing2.config.WebDriverConfig;
+<<<<<<< HEAD
 import org.openqa.selenium.WebDriver;
 
 public class GoogleTestingApp {
     public static void main(String[] args){
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
         driver.get("https://www.google.com");
+=======
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class GoogleTestingApp {
+
+    public static final String SEARCHFIELD = "lst-ib";
+
+    public static  void main(String[] args){
+        WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
+        driver.get("https://www.google.com");
+
+        WebElement searchField = driver.findElement(By.id(SEARCHFIELD));
+        searchField.sendKeys("Kodilla");
+        searchField.submit();
+>>>>>>> 55686fe32a2c0e0083102ca5cf592c5cfba8c31e
     }
 }
