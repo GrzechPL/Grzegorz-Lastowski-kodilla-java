@@ -15,7 +15,8 @@ public class CrudAppTestingApp {
 
     public static void main(String[] args){
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
-        driver.get("https://grzechpl.github.io/");
+        //driver.get("https://grzechpl.github.io/");
+        driver.get("http://localhost:8888/tasks_frontend/");
 
         WebElement searchField = driver.findElement(By.xpath(XPATH_INPUT));
         searchField.sendKeys("New robotic task");
