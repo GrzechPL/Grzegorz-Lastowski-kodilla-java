@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -100,16 +101,23 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
     return result;
 }
    private void deleteTestTaskToTrello(String taskName) throws InterruptedException {
-        final String XPATH_DEL_BUTTON = "/html/body/main/section[2]/div/form/div/fieldset[1]/button[4]";
-        WebElement addButton = driver.findElement(By.xpath(XPATH_DEL_BUTTON));
-        addButton.click();
 
-        Thread.sleep(2000);
-    }
+       List<WebElement> elements = driver.findElements(By.xpath("//form[@class=\"datatable__row\"]"));
+       List<WebElement> buttons= elements.stream()
+               .filter(anyForm ->
+                       anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                               .getText().equals(taskName)).collect(Collectors.toList());
+       WebElement selectElement = driver.findElement(By.xpath(".//select[1]"));
+       Select select = new Select(selectElement);
+       select.selectByIndex(1);
+       selectElement.click();
+
+   }
     @Test
     public void shouldCreateTrelloCard() throws InterruptedException{
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
+        deleteTestTaskToTrello(taskName);
         assertTrue(checkTaskExistsInTrello(taskName));
     }
 
