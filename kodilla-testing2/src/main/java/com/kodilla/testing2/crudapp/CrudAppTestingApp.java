@@ -9,14 +9,13 @@ import org.openqa.selenium.support.ui.Select;
 public class CrudAppTestingApp {
     public static final String XPATH_INPUT = "//html/body/main/section/form/fieldset/input";
     public static final String XPATH_TEXTAREA = "//html/body/main/section/form/fieldset[2]/textarea";
-    //public static final String XPATH_SELECT = "//div[contains(@class, \"tasks-container\")]/form/div/fieldset/select[1]";
     public static final String XPATH_SELECT = "//select[1]";
 
 
     public static void main(String[] args){
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
-        //driver.get("https://grzechpl.github.io/");
-        driver.get("http://localhost:8888/tasks_frontend/");
+        driver.get("https://grzechpl.github.io/");
+        //driver.get("http://localhost:8888/tasks_frontend/");
 
         WebElement searchField = driver.findElement(By.xpath(XPATH_INPUT));
         searchField.sendKeys("New robotic task");
