@@ -4,9 +4,8 @@ import com.kodilla.testing2.config.WebDriverConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -35,9 +34,9 @@ public class CrudAppTestSuite {
 
 
     public String createCrudAppTestTask() throws InterruptedException {
-        final String XPATH_TASK_NAME = "//form[contains(@action, \"createTask\")]/fieldset[1]/input";
-        final String XPATH_TASK_CONTENT = "//form[contains(@action, \"createTask\")]/fieldset[2]/textarea";
-        final String XPATH_ADD_BUTTON = "//form[contains(@action, \"createTask\")]/fieldset[3]/button";
+        final String XPATH_TASK_NAME = "//form[contains(@action, \"tasks\")]/fieldset[1]/input";
+        final String XPATH_TASK_CONTENT = "//form[contains(@action, \"tasks\")]/fieldset[2]/textarea";
+        final String XPATH_ADD_BUTTON = "//form[contains(@action, \"tasks\")]/fieldset[3]/button";
         String taskName = "Task number " + generator.nextInt(100000);
         String taskContent = taskName + " content";
 
@@ -127,10 +126,22 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
    }
     @Test
     public void shouldCreateTrelloCard() throws InterruptedException{
-        String taskName = createCrudAppTestTask();
-        sendTestTaskToTrello(taskName);
-        assertTrue(checkTaskExistsInTrello(taskName));
-        deleteTestTaskToTrello(taskName);
+        try {
+            String taskName = createCrudAppTestTask();
+            sendTestTaskToTrello(taskName);
+             assertTrue(checkTaskExistsInTrello(taskName));
+            deleteTestTaskToTrello(taskName);
+        } catch (UnhandledAlertException f) {
+            try {
+                Alert alert = driver.switchTo().alert();
+                String alertText = alert.getText();
+                System.out.println("Alert data: " + alertText);
+                alert.accept();
+            } catch (NoAlertPresentException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
 }
