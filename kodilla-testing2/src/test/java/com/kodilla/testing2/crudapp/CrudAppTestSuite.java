@@ -34,6 +34,7 @@ public class CrudAppTestSuite {
 
 
     public String createCrudAppTestTask() throws InterruptedException {
+
         final String XPATH_TASK_NAME = "//form[contains(@action, \"tasks\")]/fieldset[1]/input";
         final String XPATH_TASK_CONTENT = "//form[contains(@action, \"tasks\")]/fieldset[2]/textarea";
         final String XPATH_ADD_BUTTON = "//form[contains(@action, \"tasks\")]/fieldset[3]/button";
@@ -55,6 +56,7 @@ public class CrudAppTestSuite {
     }
     private void sendTestTaskToTrello(String taskName) throws InterruptedException{
 
+        driver.navigate().refresh();
 
         while (!driver.findElement(By.xpath("//select[1]")).isDisplayed());
 
@@ -75,7 +77,6 @@ public class CrudAppTestSuite {
 private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException{
 
 
-
         final String TRELLO_URL = "https://trello.com/login";
        boolean result = false;
 
@@ -88,7 +89,7 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
 
     Thread.sleep(2000);
 
-    driverTrello.findElements(By.xpath("//a[@class=\"board-title\"]")).stream()
+    driverTrello.findElements(By.xpath("//a[@class=\"board-tile\"]")).stream()
             .filter(aHref -> aHref.findElements(By.xpath(".//span[@title=\"Kodilla Application\"]")).size() > 0)
             .forEach(aHref->aHref.click());
 
@@ -118,8 +119,8 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
    private void deleteTestTaskToTrello(String taskName) throws InterruptedException {
 
 
-//       Alert alert = driver.switchTo().alert();
-//       alert.accept();
+       Alert alert = driver.switchTo().alert();
+       alert.accept();
 
            driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
                .filter(anyForm ->
