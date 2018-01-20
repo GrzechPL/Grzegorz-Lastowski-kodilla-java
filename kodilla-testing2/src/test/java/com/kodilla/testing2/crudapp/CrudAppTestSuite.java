@@ -55,6 +55,7 @@ public class CrudAppTestSuite {
     }
     private void sendTestTaskToTrello(String taskName) throws InterruptedException{
 
+
         while (!driver.findElement(By.xpath("//select[1]")).isDisplayed());
 
         driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
@@ -72,7 +73,10 @@ public class CrudAppTestSuite {
                     Thread.sleep(5000);
     }
 private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException{
-       final String TRELLO_URL = "https://trello.com/login";
+
+
+
+        final String TRELLO_URL = "https://trello.com/login";
        boolean result = false;
 
        WebDriver driverTrello = WebDriverConfig.getDriver((WebDriverConfig.FIREFOX));
@@ -90,10 +94,22 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
 
     Thread.sleep(2000);
 
-    result = driverTrello.findElements(By.xpath("//span")).stream()
-            .filter(theSpan -> theSpan.getText().contains(taskName))
-            .collect(Collectors.toList())
-            .size() > 0;
+    List<WebElement> results = driverTrello.findElements(By.xpath("//span"));
+    for(WebElement element : results) {
+        try{
+            if(element.getText().contains(taskName)) {
+                return true;
+            }
+        } catch(StaleElementReferenceException e) {
+            return false;
+        }
+    }
+
+
+//    result = driverTrello.findElements(By.xpath("//span")).stream()
+//            .filter(theSpan -> theSpan.getText().contains(taskName))
+//            .collect(Collectors.toList())
+//            .size() > 0;
 
     driverTrello.close();
 
@@ -101,8 +117,9 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
 }
    private void deleteTestTaskToTrello(String taskName) throws InterruptedException {
 
-       Alert alert = driver.switchTo().alert();
-       alert.accept();
+
+//       Alert alert = driver.switchTo().alert();
+//       alert.accept();
 
            driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
                .filter(anyForm ->
