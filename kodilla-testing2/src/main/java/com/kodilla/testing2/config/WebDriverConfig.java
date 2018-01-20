@@ -14,18 +14,13 @@ public class WebDriverConfig {
 
 
     public static WebDriver getDriver(final String driver) {
-
-        DesiredCapabilities dc = new DesiredCapabilities();
-        dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-
-
         System.setProperty("webdriver.gecko.driver", "c:\\Selenium-drivers\\Firefox\\geckodriver.exe");
         System.setProperty("webdriver.chrome.driver", "c:\\Selenium-drivers\\Chrome\\chromedriver.exe");
 
         if (driver.equals(FIREFOX)) {
-            return new FirefoxDriver(dc);
+            return new FirefoxDriver();
         }else if (driver.equals(CHROME)) {
-          return new ChromeDriver(dc);
+          return new ChromeDriver();
             }else {
                 return null;
                 }

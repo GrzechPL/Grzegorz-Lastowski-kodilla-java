@@ -54,7 +54,6 @@ public class CrudAppTestSuite {
         return taskName;
     }
     private void sendTestTaskToTrello(String taskName) throws InterruptedException{
-        driver.navigate().refresh();
 
         while (!driver.findElement(By.xpath("//select[1]")).isDisplayed());
 
@@ -75,6 +74,7 @@ public class CrudAppTestSuite {
 private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException{
        final String TRELLO_URL = "https://trello.com/login";
        boolean result = false;
+
        WebDriver driverTrello = WebDriverConfig.getDriver((WebDriverConfig.FIREFOX));
        driverTrello.get(TRELLO_URL);
 
@@ -101,7 +101,10 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
 }
    private void deleteTestTaskToTrello(String taskName) throws InterruptedException {
 
-       driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+       Alert alert = driver.switchTo().alert();
+       alert.accept();
+
+           driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
                .filter(anyForm ->
                        anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
                                .getText().equals(taskName))
@@ -126,21 +129,11 @@ private boolean checkTaskExistsInTrello(String taskName) throws InterruptedExcep
    }
     @Test
     public void shouldCreateTrelloCard() throws InterruptedException{
-        try {
-            String taskName = createCrudAppTestTask();
+
+        String taskName = createCrudAppTestTask();
             sendTestTaskToTrello(taskName);
-             assertTrue(checkTaskExistsInTrello(taskName));
+            assertTrue(checkTaskExistsInTrello(taskName));
             deleteTestTaskToTrello(taskName);
-        } catch (UnhandledAlertException f) {
-            try {
-                Alert alert = driver.switchTo().alert();
-                String alertText = alert.getText();
-                System.out.println("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                e.printStackTrace();
-            }
-        }
 
     }
 
